@@ -1,0 +1,16 @@
+{
+    "name": "mendrika/livredor",
+    "authors": [
+        {
+            "name": "Mendrika-Randriamora",
+            "email": "wanimirana@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App",
+            "Core\\": "Core"
+        }
+    },
+    "require": {}
+}
