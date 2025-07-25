@@ -71,7 +71,7 @@ Grâce à late static binding, si une méthode du modèle de base appelle `stati
    - Si le fichier n'existe pas, il sera créé automatiquement lors de la première insertion de données.
 6. Lancer le serveur PHP intégré :
    ```sh
-   php -S localhost:8000 -t public
+   php -S localhost:8000
    ```
 
 ## Auteur
