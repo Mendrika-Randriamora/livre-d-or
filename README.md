@@ -5,7 +5,7 @@ Ce projet est une application web simple de type "livre d'or" développée en PH
 ## Structure du projet
 - `App/Controller/` : Contrôleurs de l'application
 - `App/Tables/` : Modèles représentant les tables de la base de données
-- `Core/` : Composants de base (connexion à la base, modèle générique)
+- `Core/` : Composants de base (connexion à la base, modèle générique, etc)
 - `elements/` : Éléments de mise en page (header, footer, layout)
 - `public/` : Fichiers accessibles publiquement (index, CSS)
 - `views/` : Vues affichant les données
@@ -13,32 +13,32 @@ Ce projet est une application web simple de type "livre d'or" développée en PH
 
 ## Routeur PHP
 
-Ce projet utilise un routeur PHP maison situé dans le fichier `router.php` à la racine du projet. Ce routeur permet de définir facilement des routes pour gérer les requêtes HTTP (GET, POST, etc.) et d'associer chaque route à une vue ou à une fonction callback.
+Ce projet utilise un routeur PHP maison situé dans la classe `Core\Route.php`. Cette classe permet de définir facilement des routes pour gérer les requêtes HTTP (GET, POST, etc.) et d'associer chaque route à une vue ou à une fonction callback.
 
 Exemple d'utilisation dans `index.php` :
 ```php
-get('/', function() {
+Route::get('/', function() {
     echo "Accueil";
 });
 
 // Route vers le contrôleur PublicController
-get('/', PublicController::index());
+Route::get('/', PublicController::index());
 ```
 Le routeur gère aussi les routes dynamiques avec variables :
 ```php
-get('/user/$id', function($id) {
+Route::get('/user/$id', function($id) {
     echo "Utilisateur : $id";
 });
 ```
-Les routes peuvent pointer vers des fichiers de vue ou des callbacks PHP. Pour plus de détails, consultez le fichier `router.php`.
-Pour plus d'informations sur le routeur, consultez le fichier `router.php` à la racine du projet et son documentation officielle [phprouter](https://phprouter.com/).
-
+Les routes peuvent pointer vers des fichiers de vue ou des callbacks PHP. Pour plus de détails, consultez le fichier `Core\Router.php`.
+Pour plus d'informations sur les fonctionnements des routeurs, consulter [phprouter](https://phprouter.com/)
+**NB** : C'est la même fonctionnement que phprouter mais je l'ai mise en orienté objet
 
 ## Late Static Binding dans le Modèle
 
 Le modèle principal (`Model`) utilise le mécanisme de **late static binding** (liaison statique tardive) de PHP pour permettre l'héritage flexible des propriétés et méthodes statiques. Cela signifie que les classes enfants (par exemple `Message`) peuvent définir leurs propres propriétés statiques (`$table`, `$primary_key`, `$cols_fillable`), et les méthodes du modèle de base utiliseront toujours les valeurs de la classe appelée, et non celles de la classe parente.
 
-Par exemple, dans `Message.php` :
+Par exemple, dans `App\Tables\Message.php` :
 ```php
 protected static function current_table(): string {
     return self::$table;
