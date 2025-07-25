@@ -1,13 +1,13 @@
 
-<?php ob_start() ?>
+<?php
+ob_start();
+?>
 <div class="container">
     <div class="fs-1">Liste des messages</div>
 
     <?php
 
-    use App\Tables\Message;
-
-    foreach(Message::all() as $message): ?>
+    foreach($messages as $message): ?>
         <article class="card mt-4 p-2">
 
         <div class="car-title d-flex justify-content-between">
@@ -24,4 +24,4 @@
 
 </div>
 
-<? $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); ?>
