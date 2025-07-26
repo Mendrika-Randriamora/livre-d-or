@@ -1,6 +1,6 @@
 <?php
 
-use App\Controller\PublicController;
+use App\Controller\MessageController;
 use Core\Route;
 
 require_once  __DIR__ . "/vendor/autoload.php";
@@ -12,9 +12,9 @@ require_once  __DIR__ . "/vendor/autoload.php";
 /**
  * La route pour hhttp://localhost:8000/
  */
-Route::get('/', PublicController::index());
+Route::get('/message', MessageController::index());
 
-Route::get('/new', PublicController::ajouter());
+Route::get('/message/new', MessageController::ajouter());
 
-Route::post('/new', PublicController::stocker());
+Route::post('/message/new', MessageController::stocker());
 
