@@ -36,7 +36,7 @@ Pour plus d'informations sur les fonctionnements des routeurs, consulter [phprou
 
 ## Late Static Binding dans le Modèle
 
-Le modèle principal (`Model`) utilise le mécanisme de **late static binding** (liaison statique tardive) de PHP pour permettre l'héritage flexible des propriétés et méthodes statiques. Cela signifie que les classes enfants (par exemple `Message`) peuvent définir leurs propres propriétés statiques (`$table`, `$primary_key`, `$cols_fillable`), et les méthodes du modèle de base utiliseront toujours les valeurs de la classe appelée, et non celles de la classe parente.
+Le modèle principal (`Core\Model\Model.php`) utilise le mécanisme de **late static binding** (liaison statique tardive) de PHP pour permettre l'héritage flexible des propriétés et méthodes statiques. Cela signifie que les classes enfants (par exemple `Message`) peuvent définir leurs propres propriétés statiques (`$table`, `$primary_key`, `$cols_fillable`), et les méthodes du modèle de base utiliseront toujours les valeurs de la classe appelée, et non celles de la classe parente.
 
 Par exemple, dans `App\Tables\Message.php` :
 ```php
