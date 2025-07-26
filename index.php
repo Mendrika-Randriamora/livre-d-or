@@ -14,6 +14,10 @@ require_once  __DIR__ . "/vendor/autoload.php";
  */
 Route::get('/', PublicController::index());
 
+Route::get('/new', PublicController::ajouter());
+
+Route::post('/new', PublicController::stocker());
+
 /**
  * ------------------------------------------------------
  * |             Documentation officielle               |
