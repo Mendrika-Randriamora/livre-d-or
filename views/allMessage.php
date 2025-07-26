@@ -3,7 +3,12 @@
 ob_start();
 ?>
 <div class="container">
-    <div class="fs-1">Liste des messages</div>
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="fs-1">Liste des messages</div>
+        <a href="/new">
+            <button type="button" class="btn btn-primary">Nouvelle message</button>
+        </a>
+    </div>
 
     <?php
 

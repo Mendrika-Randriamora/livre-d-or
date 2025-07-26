@@ -95,13 +95,26 @@ class Model
 
     public static function delete(string|int $id) : void
     {
+        $table = self::getTable();
+        $primary_key = self::getPrimaryKey();
 
+        $request = "DELETE FROM $table WHERE $primary_key = $id";
+
+        try {
+            
+            $stmt = self::pdo()->query($request);
+
+        } catch (\Throwable $th) {
+            die($th->getMessage());
+        }
     }
 
     public static function all() : array
     {
         $table = self::getTable();
-        $request = "SELECT * FROM $table";
+        $primary_key = self::getPrimaryKey();
+
+        $request = "SELECT * FROM $table ORDER BY $primary_key DESC";
 
         try {
             $stmt = self::pdo()->query($request);
