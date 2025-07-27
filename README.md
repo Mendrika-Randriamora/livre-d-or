@@ -46,6 +46,9 @@ protected static function current_table(): string {
 ```
 Grâce à late static binding, si une méthode du modèle de base appelle `static::current_table()`, c'est la version de la classe enfant qui sera utilisée, et la propriété `$table` de la classe enfant sera retournée. Cela permet de réutiliser le code du modèle de base pour différentes tables sans le dupliquer.
 
+## Authentification
+Le projet inclut un système d'authentification simple basé sur des sessions. Les utilisateurs peuvent se connecter et se déconnecter, et leurs sessions sont gérées via la classe `Cor\Auth.php`.
+
 ## Installation
 1. Cloner le dépôt
 2. Installer Composer (si ce n'est pas déjà fait) :
