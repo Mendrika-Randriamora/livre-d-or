@@ -32,6 +32,11 @@ class Auth
         session_start();
         session_unset();
         session_destroy();
+<<<<<<< HEAD
+=======
+
+        header('Location: /login');
+>>>>>>> c3d107d (Modification du readme et du Core)
     } 
 
     public static function password_confirmed() : bool
