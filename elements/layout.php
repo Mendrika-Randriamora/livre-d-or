@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <div class="container">
+    <div class="container d-flex justify-content-center">
         <?= $content ?? "" ?>
     </div>
 

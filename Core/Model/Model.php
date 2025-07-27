@@ -93,6 +93,23 @@ class Model
 
     }
 
+    public static function where($cols, $value)
+    {
+        $table = self::getTable();
+
+        $request = "SELECT * FROM $table WHERE $cols =  '$value'";
+
+        try 
+        {
+            $stmt = self::pdo()->query($request);
+            
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (\Throwable $e) 
+        {   
+            die($e->getMessage());
+        }
+    }
+
     public static function delete(string|int $id) : void
     {
         $table = self::getTable();
