@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Tables\Message;
 use Core\Route;
+use Core\View;
 
 require_once "./vendor/autoload.php";
 
@@ -13,8 +14,7 @@ class PublicController
     {
         return function() 
         {
-            require_once "./views/index.php";
-            require_once "./elements/layout.php";
+            View::render('index');
         };
     }
 }

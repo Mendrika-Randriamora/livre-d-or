@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Tables\User;
 use Core\Auth;
 use Core\Route;
+use Core\View;
 
 class AuthController
 {
@@ -12,8 +13,7 @@ class AuthController
     {
         return function() 
         {
-            require_once "./views/auth/register.php";
-            require_once "./elements/layout.php";
+            View::render("auth/register");
         };
     }
 
@@ -46,8 +46,7 @@ class AuthController
     {
         return function()
         {
-            require_once "./views/auth/login.php";
-            require_once "./elements/layout.php";
+            View::render("auth/login");
         };
     } 
 

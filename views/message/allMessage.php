@@ -1,7 +1,4 @@
 
-<?php
-ob_start();
-?>
 <div class="container">
     <div class="d-flex justify-content-between align-items-center">
         <div class="fs-1">Liste des messages</div>
@@ -16,9 +13,7 @@ ob_start();
         </div>
     </div>
 
-    <?php
-
-    foreach($messages as $message): ?>
+    <?php foreach($messages as $message): ?>
         <article class="card mt-4 p-2">
 
         <div class="car-title d-flex justify-content-between">
@@ -34,5 +29,3 @@ ob_start();
     <?php endforeach; ?>
 
 </div>
-
-<?php $content = ob_get_clean(); ?>
