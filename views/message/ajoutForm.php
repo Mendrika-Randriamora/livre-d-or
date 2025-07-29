@@ -1,10 +1,5 @@
 
-<?php
-
-use Core\Route;
-
-ob_start() 
-?>
+<?php use Core\Route; ?>
 
 <form class="form-group" action="" method="post">
     <?php 
@@ -30,5 +25,3 @@ ob_start()
         <button type="submit" class="w-75 btn btn-primary">Publier</button>
     </div>
 </form>
-
-<?php $content = ob_get_clean() ?>

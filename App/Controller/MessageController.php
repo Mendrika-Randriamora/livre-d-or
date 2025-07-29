@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Tables\Message;
 use Core\Auth;
 use Core\Route;
+use Core\View;
 
 require_once "./vendor/autoload.php";
 
@@ -17,9 +18,9 @@ class MessageController
             // Pour dire que ceci est réserver au utilisateur connécté
             Auth::auth();
 
-            $messages = Message::all();
-            require_once "./views/message/allMessage.php";
-            require_once "./elements/layout.php"; 
+            View::render('message/allMessage', [
+                "messages" => Message::all() 
+            ]);
         };
     }
 
@@ -29,8 +30,7 @@ class MessageController
         {
             Auth::auth();
             
-            require_once "./views/message/ajoutForm.php";
-            require_once "./elements/layout.php"; 
+            View::render("message/ajoutForm");
         };
     }
 

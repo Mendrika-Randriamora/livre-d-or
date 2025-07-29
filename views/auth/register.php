@@ -1,8 +1,4 @@
-<?php
-
-use Core\Route;
-
-ob_start() ?>
+<?php use Core\Route; ?>
 <div>
     <h3 class="container text-center">
         Page d'inscription
@@ -30,4 +26,3 @@ ob_start() ?>
         </div>  
     </form>
 </div>
-<?php $content = ob_get_clean() ?>
