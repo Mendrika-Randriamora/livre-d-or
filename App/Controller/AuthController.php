@@ -11,32 +11,27 @@ class AuthController
 {
     public static function registerForm()
     {
-        return function() 
-        {
+        return function () {
             View::render("auth/register");
         };
     }
 
     public static function register()
     {
-        return function()
-        {
-            if (Route::is_csrf_valid() && Auth::password_confirmed()) 
-            {
+        return function () {
+            if (Route::is_csrf_valid() && Auth::password_confirmed()) {
                 extract($_POST);
 
-                if ($name && $email && $password) 
-                {
+                if ($name && $email && $password) {
                     session_start();
                     User::add([$name, $email, password_hash($password, PASSWORD_DEFAULT), "user"]);
                     $_SESSION["user_name"] = $name;
-                    $_SESSION["role"] = "user"; 
+                    $_SESSION["role"] = "user";
                     header('Location: /message');
                     exit();
-                } 
+                }
                 header('Location: /register');
-            } else 
-            {
+            } else {
                 header('Location: /register');
             }
         };
@@ -44,22 +39,18 @@ class AuthController
 
     public static function loginForm()
     {
-        return function()
-        {
+        return function () {
             View::render("auth/login");
         };
-    } 
+    }
 
     public static function login()
     {
-        return function()
-        {
-            if (Route::is_csrf_valid() && Auth::login()) 
-            {
+        return function () {
+            if (Route::is_csrf_valid() && Auth::login()) {
                 header('Location: /message');
                 exit();
-            } else
-            {
+            } else {
                 header('Location: /login');
             }
         };
