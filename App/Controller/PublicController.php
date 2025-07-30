@@ -6,14 +6,13 @@ use App\Tables\Message;
 use Core\Route;
 use Core\View;
 
-require_once "./vendor/autoload.php";
+require_once "./../vendor/autoload.php";
 
-class PublicController 
+class PublicController
 {
     public static function index()
     {
-        return function() 
-        {
+        return function () {
             View::render('index');
         };
     }

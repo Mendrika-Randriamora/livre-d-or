@@ -7,45 +7,40 @@ use Core\Auth;
 use Core\Route;
 use Core\View;
 
-require_once "./vendor/autoload.php";
+require_once "./../vendor/autoload.php";
 
 class MessageController
 {
-    public static function index() : \Closure
-    { 
-        return function()
-        {
+    public static function index(): \Closure
+    {
+        return function () {
             // Pour dire que ceci est réserver au utilisateur connécté
             Auth::auth();
 
             View::render('message/allMessage', [
-                "messages" => Message::all() 
+                "messages" => Message::all()
             ]);
         };
     }
 
     public static function ajouter()
     {
-        return function()
-        {
+        return function () {
             Auth::auth();
-            
+
             View::render("message/ajoutForm");
         };
     }
 
     public static function stocker()
     {
-        return function() 
-        {
+        return function () {
             Auth::auth();
-            
-            if (Route::is_csrf_valid()) 
-            { 
-                Message::add([$_POST["name"], date("d-m-Y"), $_POST["content"]]); 
-                header("Location: /message");          
-            } else
-            {
+
+            if (Route::is_csrf_valid()) {
+                Message::add([$_POST["name"], date("d-m-Y"), $_POST["content"]]);
+                header("Location: /message");
+            } else {
                 die("Désolé");
             }
         };
