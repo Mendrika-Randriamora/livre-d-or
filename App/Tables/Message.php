@@ -14,7 +14,7 @@ class Message extends Model
 
     protected static $cols_fillable = [
         "name" ,
-        "date",
+        "created_at",
         "message"
     ];
 
