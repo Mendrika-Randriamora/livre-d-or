@@ -2,7 +2,7 @@
 
 namespace App\Tables;
 
-require_once "./vendor/autoload.php";
+require_once "./../vendor/autoload.php";
 
 use Core\Model\Model;
 
@@ -13,8 +13,8 @@ class Message extends Model
     protected static $primary_key = "id";
 
     protected static $cols_fillable = [
-        "name" ,
-        "date",
+        "name",
+        "created_at",
         "message"
     ];
 
@@ -23,11 +23,11 @@ class Message extends Model
         return self::$cols_fillable;
     }
 
-    protected static function current_table() : string
+    protected static function current_table(): string
     {
         return self::$table;
     }
-    
+
     protected static function current_primary_key(): string
     {
         return self::$primary_key;
