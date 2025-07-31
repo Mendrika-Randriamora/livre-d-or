@@ -77,5 +77,12 @@ Le projet inclut un système d'authentification simple basé sur des sessions. L
    php -S localhost:8000 -t public
    ```
 
+## Structure de la base de donnée
+Les tables de la base de données sont définies dans le dossier `App/Tables/`. Chaque table est représentée par une classe qui étend le modèle de base. Par exemple, la table des messages est définie dans `App/Tables/Message.php`.
+Chaque classe de table doit définir les propriétés suivantes :
+- `$table` : Nom de la table dans la base de données
+- `$primary_key` : Clé primaire de la table
+- `$cols_fillable` : Liste des colonnes pouvant être remplies lors de l'insertion de données 
+
 ## Auteur
 - Projet réalisé par Mendrika Randriamora
