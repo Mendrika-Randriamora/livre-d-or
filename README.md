@@ -59,15 +59,15 @@ Le projet inclut un système d'authentification simple basé sur des sessions. L
    composer install
    ```
    Cela va installer les packages nécessaires et générer l'autoloader dans le dossier `vendor/`.
-    
+   Configurer votre `composer.json` si nécessaire pour ajouter des dépendances supplémentaires(prs-4). 
     Pour (re)générer ou mettre à jour l'autoloader manuellement, utilisez :
     ```sh
     composer dump-autoload
     ```
     Cette commande permet de régénérer l'autoloader si vous ajoutez ou modifiez des classes dans le projet.
 4. Vérifier la configuration de l'autoloader :
-   - L'autoloader généré par Composer (`vendor/autoload.php`) est inclus dans les fichiers PHP principaux du projet via `require_once './vendor/autoload.php';`
-   - Cela permet de charger automatiquement les classes selon la structure des namespaces définis dans le projet.
+   - L'autoloader généré par Composer (`vendor/autoload.php`) est inclus dans les fichiers PHP principaux du projet via `require_once './../vendor/autoload.php';`
+   - Cela permet de charger automatiquement les classes selon la structure des namespaces définis dans le projet. (configurer votre composer.json si nécessaire)
 5. Configurer la base de données SQLite :
    - Le fichier de base de données SQLite est situé dans `Core/Database/database.sqlite`.
    - Assurez-vous que le fichier existe et que les permissions sont correctes pour que PHP puisse y écrire.
