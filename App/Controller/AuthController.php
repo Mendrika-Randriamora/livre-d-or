@@ -25,8 +25,9 @@ class AuthController
                 if ($name && $email && $password) {
                     session_start();
                     User::add([$name, $email, password_hash($password, PASSWORD_DEFAULT), "user"]);
-                    $_SESSION["user_name"] = $name;
-                    $_SESSION["role"] = "user";
+
+                    if (!Auth::login()) return header('Location: /login');
+
                     header('Location: /message');
                     exit();
                 }
