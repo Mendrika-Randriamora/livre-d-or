@@ -6,23 +6,28 @@ use App\Tables\User;
 
 class Auth
 {
-    public static function login(): bool
+    public static function login(): null|array
     {
         session_start();
-        $user = User::where("email", $_POST["email"]);
+        if ($_SESSION["user_name"] ?? false) {
+            $user = User::where("name", $_SESSION["user_name"]);
+            if (!$user) {
+                return null;
+            }
+        } else {
+            $user = User::where("email", $_POST["email"] ?? null);
+            if (!$user) {
+                return null;
+            }
+            $_SESSION["user_name"] = $user["name"];
+            $_SESSION["role"] = $user["role"];
 
-        if (!$user) {
-            return false;
+            if (!isset($_POST["password"]) || !password_verify($_POST["password"], $user["password"])) {
+                return null;
+            }
         }
 
-        if (!password_verify($_POST["password"], $user["password"])) {
-            return false;
-        }
-
-        $_SESSION["user_name"] = $user["name"];
-        $_SESSION["role"] = $user["role"];
-
-        return true;
+        return is_array($user) ? $user : null;
     }
 
     public static function logout()

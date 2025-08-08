@@ -28,7 +28,11 @@ class MessageController
         return function () {
             Auth::auth();
 
-            View::render("message/ajoutForm");
+            $user = Auth::login();
+
+            View::render("message/ajoutForm", [
+                'user' => $user,
+            ]);
         };
     }
 

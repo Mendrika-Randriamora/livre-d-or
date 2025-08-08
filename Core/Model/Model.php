@@ -68,7 +68,25 @@ class Model
         }
     }
 
-    public static function update(string|int $id, array $data): void {}
+    public static function update(string|int $id, array $data): void
+    {
+        $table = self::getTable();
+        $primary_key = self::getPrimaryKey();
+
+        $set = [];
+        foreach ($data as $col => $value) {
+            $set[] = "$col = " . self::pdo()->quote($value);
+        }
+        $set_clause = implode(", ", $set);
+
+        $request = "UPDATE $table SET $set_clause WHERE $primary_key = " . self::pdo()->quote($id);
+
+        try {
+            self::pdo()->query($request);
+        } catch (\PDOException $th) {
+            die($th->getMessage());
+        }
+    }
 
     public static function find(string|int $id): array
     {

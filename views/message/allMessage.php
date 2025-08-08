@@ -7,7 +7,7 @@
                 <button type="button" class="btn btn-primary">Nouvelle message</button>
             </a>
             <a class="btn btn-lg" href="/setting">
-                <img style="width: 20px;" src="img/gear.svg" alt="setting">
+                <img style="width: 20px;" src="/../img/gear.svg" alt="setting">
             </a>
         </div>
     </div>

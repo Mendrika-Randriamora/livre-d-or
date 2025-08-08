@@ -3,6 +3,7 @@
 use App\Controller\AuthController;
 use App\Controller\MessageController;
 use App\Controller\PublicController;
+use App\Controller\UserController;
 use Core\Auth;
 use Core\Route;
 
@@ -32,3 +33,6 @@ Route::get('/message', MessageController::index());
 Route::get('/message/new', MessageController::ajouter());
 
 Route::post('/message/new', MessageController::stocker());
+
+Route::get('/setting', UserController::profile());
+Route::post('/setting', UserController::update());
