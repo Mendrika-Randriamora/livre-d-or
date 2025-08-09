@@ -12,7 +12,11 @@
         </div>
     </div>
 
-    <?php foreach ($messages as $message): ?>
+    <?php
+
+    use Core\Route;
+
+    foreach ($messages as $message): ?>
         <article class="card mt-4 p-2">
 
             <div class="car-title d-flex justify-content-between">
@@ -24,6 +28,15 @@
                 <?= htmlspecialchars($message["message"]) ?>
             </div>
 
+            <?php if ($message["name"] == $_SESSION["user_name"]) : ?>
+                <div class="d-flex justify-content-end">
+                    <form action="/message/delete/" method="post">
+                        <?php Route::set_csrf() ?>
+                        <input type="hidden" name="id" value="<?= $message['id'] ?>">
+                        <input class="btn btn-sm btn-danger" type="submit" value="supprimer">
+                    </form>
+                </div>
+            <?php endif ?>
         </article>
     <?php endforeach; ?>
 

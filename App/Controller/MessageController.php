@@ -39,14 +39,33 @@ class MessageController
     public static function stocker()
     {
         return function () {
-            Auth::auth();
 
             if (Route::is_csrf_valid()) {
-                Message::add([$_POST["name"], date("d-m-Y"), $_POST["content"]]);
+                Message::add([$_SESSION["user_name"], date("d-m-Y"), $_POST["content"]]);
                 header("Location: /message");
             } else {
                 die("Désolé");
             }
+        };
+    }
+
+    public static function supprimer()
+    {
+        return function () {
+            Auth::auth();
+
+            if (!Route::is_csrf_valid()) return header("Location: /message");
+            exit();
+            extract($_POST);
+            $user = Auth::login();
+
+            $message = Message::find($id);
+
+            if ($user['name'] != $message["name"]) return header("Location: /message");
+            exit();
+
+            Message::delete($id);
+            header('Location: /message');
         };
     }
 }

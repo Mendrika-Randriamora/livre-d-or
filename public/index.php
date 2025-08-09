@@ -34,5 +34,7 @@ Route::get('/message/new', MessageController::ajouter());
 
 Route::post('/message/new', MessageController::stocker());
 
+Route::post("/message/delete", MessageController::supprimer());
+
 Route::get('/setting', UserController::profile());
 Route::post('/setting', UserController::update());

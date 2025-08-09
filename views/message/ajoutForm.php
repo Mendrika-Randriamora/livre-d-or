@@ -13,7 +13,8 @@ use Core\Route; ?>
             class="form-control"
             placeholder="Jean Marie"
             value="<?= $user['name'] ?? ''; ?>"
-            required>
+            required
+            disabled>
 
     </div>
     <div class="row mb-3 gap-2">
