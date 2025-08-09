@@ -55,14 +55,14 @@ class MessageController
             Auth::auth();
 
             if (!Route::is_csrf_valid()) return header("Location: /message");
-            exit();
+
             extract($_POST);
             $user = Auth::login();
 
             $message = Message::find($id);
 
             if ($user['name'] != $message["name"]) return header("Location: /message");
-            exit();
+
 
             Message::delete($id);
             header('Location: /message');

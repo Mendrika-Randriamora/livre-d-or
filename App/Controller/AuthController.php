@@ -56,4 +56,15 @@ class AuthController
             }
         };
     }
+
+    public static function logout()
+    {
+
+        return function () {
+            Auth::auth();
+            if (!Route::is_csrf_valid()) return header("Location: /message");
+
+            Auth::logout();
+        };
+    }
 }

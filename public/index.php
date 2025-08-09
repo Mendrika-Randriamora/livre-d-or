@@ -28,6 +28,8 @@ Route::post('/register', AuthController::register());
 Route::get('/login', AuthController::loginForm());
 Route::post('/login', AuthController::login());
 
+Route::post("/logout", AuthController::logout());
+
 Route::get('/message', MessageController::index());
 
 Route::get('/message/new', MessageController::ajouter());
